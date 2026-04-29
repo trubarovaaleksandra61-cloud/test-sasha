@@ -130,7 +130,7 @@ test_math_operations.py::TestMathOperations::test_subtraction PASSED
 
 ## 👤 Автор
 
-Sasha Trubarova
+sasha
 
 ## 📄 Лицензия
 
