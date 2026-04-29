@@ -17,7 +17,7 @@ def pytest_sessionfinish(session, exitstatus):
         print("="*80)
         
         generator = CertificateGenerator(
-            user_name="Sasha Trubarova",
+            user_name="sasha",
             test_count=20
         )
         
