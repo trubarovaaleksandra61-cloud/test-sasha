@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Тест (20 вопросов)</title>
+<style>
+body {
+    font-family: Arial;
+    background: linear-gradient(to right, #74ebd5, #ACB6E5);
+    padding: 20px;
+}
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+h2 { text-align: center; }
+button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.correct { color: green; }
+.wrong { color: red; }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h2>Тест из 20 вопросов</h2>
+
+<form id="quiz">
+
+<!-- ВОПРОСЫ -->
+
+<script>
+const questions = [
+["HTML это?", ["Язык разметки", "Язык программирования", "База данных"], 0],
+["CSS используется для?", ["Логики", "Стилизации", "Серверов"], 1],
+["JS это?", ["Стиль", "Язык программирования", "Браузер"], 1],
+["Тег для ссылки?", ["<a>", "<link>", "<href>"], 0],
+["Тег для картинки?", ["<img>", "<image>", "<pic>"], 0],
+["Какой тег заголовка?", ["<h1>", "<p>", "<div>"], 0],
+["Где пишется CSS?", ["style", "script", "html"], 0],
+["Как подключить JS?", ["<script>", "<js>", "<code>"], 0],
+["Какой атрибут у ссылки?", ["href", "src", "link"], 0],
+["Какой тег парагр��ф?", ["<p>", "<text>", "<par>"], 0],
+
+["Какой тег кнопки?", ["<button>", "<btn>", "<click>"], 0],
+["Как задать цвет?", ["color", "font", "style"], 0],
+["Какой язык для логики?", ["HTML", "CSS", "JS"], 2],
+["Тег списка?", ["<ul>", "<list>", "<lii>"], 0],
+["Элемент списка?", ["<li>", "<ul>", "<ls>"], 0],
+["Какой тег формы?", ["<form>", "<input>", "<data>"], 0],
+["Поле ввода?", ["<input>", "<enter>", "<write>"], 0],
+["Как сделать комментарий?", ["<!-- -->", "//", "##"], 0],
+["Как задать id?", ["id", "class", "name"], 0],
+["Какой тег div?", ["<div>", "<block>", "<section>"], 0],
+];
+
+const form = document.getElementById("quiz");
+
+questions.forEach((q, i) => {
+    let html = `<p>${i+1}. ${q[0]}</p>`;
+    q[1].forEach((ans, j) => {
+        html += `
+        <label>
+            <input type="radio" name="q${i}" value="${j}">
+            ${ans}
+        </label><br>`;
+    });
+    form.innerHTML += html;
+});
+</script>
+
+<button type="button" onclick="check()">Проверить</button>
+
+<p id="result"></p>
+
+</form>
+</div>
+
+<script>
+function check() {
+    let score = 0;
+
+    questions.forEach((q, i) => {
+        let answers = document.getElementsByName("q" + i);
+        answers.forEach(a => {
+            if (a.checked && parseInt(a.value) === q[2]) {
+                score++;
+            }
+        });
+    });
+
+    document.getElementById("result").innerHTML =
+        "Ваш результат: " + score + " / 20";
+}
+</script>
+
+</body>
+</html>
